@@ -24,4 +24,27 @@
       </table>
     </div>
   </div>
+
+  <h3>Reviews</h3>
+  <% if @cocktail.reviews.empty? %>
+    <p>Leave a review!</p>
+  <% else %>
+    <% @cocktail.reviews.each do |review| %>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="badge badge-seconday badge-pill">
+            <% counter = 0 %>
+            <% 5.times do %>
+              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+              <% counter += 1 %>
+            <% end %>
+          </span>
+          <% review.content %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= render "reviews/new", cocktail: @cocktail, review: @review %>
+
 </div>
