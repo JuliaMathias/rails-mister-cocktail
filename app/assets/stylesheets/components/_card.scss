@@ -1,0 +1,17 @@
+.card-cocktail {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  color: white;
+  background-color: rgba(245, 246, 252, 0.10);
+  background-image: url('https://www.moodymixologist.com/wp-content/uploads/2020/02/classic-margarita-cocktail-recipe-03-3560629.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  padding: 20px 45px;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+
+  a {
+    color: white;
+  }
+}

@@ -1,8 +1,27 @@
 <%= render "components/banner" %>
 <div class="container mt-5">
 
-  <h1><%= @cocktail.name %></h1>
-  <%= link_to "Back to all cocktails", root_path %>
-
-
+  <h1 class="mb-5"><%= @cocktail.name %></h1>
+   <div class="row">
+    <div class="col-sm-12 col-md-6 pr-4">
+        <%= render "doses/new", cocktail: @cocktail, dose: @dose %>
+    </div>
+    <div class="col-sm-12 col-md-6 mt-2 pl-4">
+      <table class="table">
+        <tbody>
+          <% @cocktail.doses.each do |dose| %>
+            <tr>
+              <td><%= dose.ingredient.name %></td>
+              <td><%= dose.description %></td>
+              <td>
+                <%= link_to dose_path(dose), class: "text-secondary", method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="fa fa-trash destroy_dose"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
