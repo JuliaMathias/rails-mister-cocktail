@@ -1,8 +1,6 @@
-<%= render "components/banner" %>
+<%= render "components/drink-banner" %>
 <div class="container mt-5">
-
-  <h1 class="mb-5"><%= @cocktail.name %></h1>
-   <div class="row">
+   <div class="row mb-5">
     <div class="col-sm-12 col-md-6 pr-4">
         <%= render "doses/new", cocktail: @cocktail, dose: @dose %>
     </div>
@@ -32,6 +30,7 @@
     <% @cocktail.reviews.each do |review| %>
       <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= review.content %>
           <span class="badge badge-seconday badge-pill">
             <% counter = 0 %>
             <% 5.times do %>
@@ -39,12 +38,14 @@
               <% counter += 1 %>
             <% end %>
           </span>
-          <% review.content %>
+
         </li>
       <% end %>
     </ul>
   <% end %>
 
-  <%= render "reviews/new", cocktail: @cocktail, review: @review %>
+  <div class="mt-5 mb-5">
+     <%= render "reviews/new", cocktail: @cocktail, review: @review %>
+  </div>
 
 </div>

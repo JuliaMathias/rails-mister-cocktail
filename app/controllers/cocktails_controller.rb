@@ -7,6 +7,10 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.new
   end
 
+  def edit
+    @cocktail = Cocktail.find(params[:id])
+  end
+
   def create
     @cocktail = Cocktail.new(cocktail_params)
     if @cocktail.save
@@ -15,6 +19,15 @@ class CocktailsController < ApplicationController
       render 'new'
     end
   end
+
+  def update
+    if @cocktail.update(cocktail_params)
+      redirect_to @cocktail
+    else
+      render :edit
+    end
+  end
+
 
   def show
     @cocktail = Cocktail.find(params[:id])
